@@ -68,6 +68,59 @@
     </div>
 </div>
 
+<!-- Modal com o formulário de cadastro -->
+<div class="modal fade bd-edicao-modal-lg" tabindex="-1" role="dialog" aria-labelledby="ModalEdicaoUsuario" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalEdicaoUsuario">Cadastro de usuário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'editar_view' funcionario.idFuncionario %}" method="POST">{% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" maxlength="30" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Endereço</label>
+                        <input type="text" class="form-control" maxlength="30" name="enderecoFuncionario">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">CPF</label>
+                        <input type="text" class="form-control" maxlength="14" name="CPF">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">CEP</label>
+                        <input type="text" class="form-control" maxlength="8" name="CEP">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Telefone</label>
+                        <input type="text" class="form-control" maxlength="20" name="telefone">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Senha</label>
+                        <input type="text" class="form-control" maxlength="30" name="password">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Função</label>
+                        <input type="text" class="form-control" maxlength="30" name="funcao">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" class="form-control" maxlength="30" name="email">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Concluir</button>
+                    </div>
+                </form>
+            </div>  
+        </div>
+    </div>
+</div>
+
 <!-- Tabela de funcionários -->
 <table class="table table-striped">
     <thead class="thead">
@@ -94,6 +147,9 @@
             <td>{{ funcionario.email }}</td>
             <td>
                 <a href="{% url 'editar_view' funcionario.idFuncionario %}" class="btn btn-outline-primary">EDITAR</a>
+                <button type="button" class="btn btn-transparent" data-toggle="modal" data-target=".bd-cedicao-modal-lg">
+                    EDITAR
+                </button>
                 <a href="{% url 'delete_view' funcionario.idFuncionario %}" class="btn btn-outline-danger">DELETAR</a>
             </td>
         </tr>
